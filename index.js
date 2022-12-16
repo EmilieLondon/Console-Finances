@@ -86,3 +86,40 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+
+
+// let numArray = [];
+
+// for (let i = 0; i < finances.length; i++) {
+
+//     numArray.push(finances[i][1])
+//     console.log(numArray)
+// }
+
+
+
+// let finances = [["Jan-2010", 867884],["Feb-2017", 671099]];
+
+
+
+
+let total = 0;
+for (let i = 0; i < finances.length; i++) {
+    total += finances[i][1];
+}
+
+
+
+
+
+
+console.log(`
+Financial Analysis
+
+------------------------------------
+
+Total Months: ${finances.length}
+Total: $${total}
+Average Change: 
+`)
