@@ -88,6 +88,12 @@ var finances = [
 ];
 
 
+  
+
+// RETURNING NUMBER VALUES:
+// for (let i = 0; i < finances.length; i++) {
+//     console.log(finances[i][1])
+// }
 
 // let numArray = [];
 
@@ -97,22 +103,37 @@ var finances = [
 //     console.log(numArray)
 // }
 
-
-
 // let finances = [["Jan-2010", 867884],["Feb-2017", 671099]];
 
 
 
+
+
+
+
+/////////////////////
+// CORRECT CODE:
+
+// The net total amount of Profit/Losses over the entire period:
 
 let total = 0;
 for (let i = 0; i < finances.length; i++) {
     total += finances[i][1];
 }
 
+// The average of the changes in Profit/Losses over the entire period:
 
+let totalChange = 0;
 
+for (let i = 1; i < finances.length; i++) {
+    totalChange += finances[i][1] - finances[i - 1][1];
+    
+}
 
+let averageChange = totalChange / (finances.length - 1);
+averageChange = averageChange.toFixed(2);
 
+// Printing analysis:
 
 console.log(`
 Financial Analysis
@@ -121,5 +142,5 @@ Financial Analysis
 
 Total Months: ${finances.length}
 Total: $${total}
-Average Change: 
-`)
+Average Change: $${averageChange}
+`);
