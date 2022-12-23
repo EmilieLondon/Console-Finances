@@ -88,32 +88,6 @@ var finances = [
 ];
 
 
-  
-
-// RETURNING NUMBER VALUES:
-// for (let i = 0; i < finances.length; i++) {
-//     console.log(finances[i][1])
-// }
-
-// let numArray = [];
-
-// for (let i = 0; i < finances.length; i++) {
-
-//     numArray.push(finances[i][1])
-//     console.log(numArray)
-// }
-
-// let finances = [["Jan-2010", 867884],["Feb-2017", 671099]];
-
-
-
-
-
-
-
-/////////////////////
-// CORRECT CODE:
-
 // The net total amount of Profit/Losses over the entire period:
 
 let total = 0;
@@ -133,6 +107,28 @@ for (let i = 1; i < finances.length; i++) {
 let averageChange = totalChange / (finances.length - 1);
 averageChange = averageChange.toFixed(2);
 
+// The greatest increase in profits (date and amount) over the entire period.
+// The greatest decrease in losses (date and amount) over the entire period.
+
+let maxProfitMonth;
+let maxLossMonth;
+
+for (let i = 1; i < finances.length - 1; i++) {
+    const difference = finances[i + 1][1] - finances[i][1];
+    if (i===1) {
+        maxProfit = 0;
+        maxLoss = 0;
+    } else {
+        if (maxProfit < difference) {
+            maxProfit = difference;
+            maxProfitMonth = finances[i + 1][0]
+        } else if (maxLoss > difference) {
+            maxLoss = difference;
+            maxLossMonth = finances[i + 1][0]
+        }
+    }
+}
+
 // Printing analysis:
 
 console.log(`
@@ -143,4 +139,6 @@ Financial Analysis
 Total Months: ${finances.length}
 Total: $${total}
 Average Change: $${averageChange}
+Greatest Increase in Profits: ${maxProfitMonth} ($${maxProfit})
+Greatest Decrease in Profits: ${maxLossMonth} ($${maxLoss})
 `);
